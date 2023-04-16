@@ -77,26 +77,24 @@ int main()
 	VT.relsig = SIGUSR1;
 	VT.acqsig = SIGUSR1;
 
-    /*
-        For some reason it doesn't work,
-        I've tried everything, but it wont let me
-        hide the blinking cursor at the top of the left corner.
-        Please help me if you know how to fix it.
-    */
+	/*
+	    For some reason it doesn't work,
+	    I've tried everything, but it wont let me
+	    hide the blinking cursor at the top of the left corner.
+	    Please help me if you know how to fix it.
+	*/
 	ioctl(tty_fd, VT_SETMODE, &VT);
 	ioctl(tty_fd, KDSETMODE, KD_GRAPHICS);
 	ioctl(tty_fd, VT_WAITACTIVE, new_vt_num);
 
-    sleep(0.1);
-    while (1)
-    {
-	    DrawRectangle(0, 1050, 1919, 1079, 255, 255, 255);
-	    DrawRectangle(0, 0, 1919, 1050, 255, 0, 0);
-    }
+	sleep(0.1);
+	
+	DrawRectangle(0, 1050, 1919, 1079, 255, 255, 255);
+	DrawRectangle(0, 0, 1919, 1050, 255, 0, 0);
 
 	sleep(3);
 
-    // Switch back to text mode
+   	// Switch back to text mode
 	ioctl(tty_fd, KDSKBMODE, 1);
 	ioctl(tty_fd, KDSETMODE, KD_TEXT);
 
