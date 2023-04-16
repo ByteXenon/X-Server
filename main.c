@@ -81,7 +81,7 @@ int main()
 	    For some reason it doesn't work,
 	    I've tried everything, but it wont let me
 	    hide the blinking cursor at the top of the left corner.
-	    Please help me if you know how to fix it.
+	    Please help me if you know how to fix it
 	*/
 	ioctl(tty_fd, VT_SETMODE, &VT);
 	ioctl(tty_fd, KDSETMODE, KD_GRAPHICS);
